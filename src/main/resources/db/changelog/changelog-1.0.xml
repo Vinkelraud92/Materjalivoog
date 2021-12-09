@@ -5,6 +5,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <changeSet id="08.12.21 - initial database" author="Simon Felding">
+
         <createTable tableName="tag">
             <column name="tag_id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
@@ -12,12 +13,72 @@
             <column name="name" type="text"/>
         </createTable>
 
-        <createTable tableName="listing_tag">
-            <column name="listing_id" type="int">
-                <constraints foreignKeyName="fk_listing_to_tag" references="listing(listing_id)"/>
+        <createTable tableName="category">
+            <column name="category_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
             </column>
-            <column name="tag_id" type="int">
-                <constraints foreignKeyName="fk_tag_to_listing_tag" references="tag(tag_id)"/>
+            <column name="name" type="text"/>
+        </createTable>
+
+        <createTable tableName="subcategory">
+            <column name="subcategory_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="text"/>
+            <column name="category_id" type="int">
+                <constraints foreignKeyName="fk_category_to_subcategory" references="category(category_id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="payment">
+            <column name="account_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="balance" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="region">
+            <column name="region_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="region_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user">
+            <column name="user_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_name" type="text"/>
+            <column name="account_number" type="int">
+                <constraints foreignKeyName="fk_payment_to_user" references="payment(account_id)"/>
+            </column>
+            <column name="region" type="int">
+                <constraints foreignKeyName="fk_region_to_user" references="region(region_id)"/>
+            </column>
+            <column name="billing_address" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shipping_address" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_media">
+            <column name="media_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints foreignKeyName="fk_user_to_user_media" references="user(user_id)"/>
+            </column>
+            <column name="format" type="text">
+                <constraints nullable="false"/>
             </column>
         </createTable>
 
@@ -26,7 +87,7 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="user_id" type="int">
-                <constraints foreignKeyName="fk_user_to_listing" references="user(id)"/>
+                <constraints foreignKeyName="fk_user_to_listing" references="user(user_id)"/>
             </column>
             <column name="category" type="int">
                 <constraints foreignKeyName="fk_category_to_listing" references="category(category_id)"/>
@@ -62,86 +123,33 @@
             <column name="description_2" type="text"/>
             <column name="discount_price" type="int"/>
             <column name="discount_percentage" type="int"/>
-            <column name="region" type="text">
-                <constraints foreignKeyName="fk_user_to_listing" references="user(region)"/>
+            <column name="region" type="int">
+                <constraints foreignKeyName="fk_region_to_listing_region" references="region(region_id)"/>
             </column>
             <column name="location" type="text">
-                <constraints foreignKeyName="fk_user_to_listing" references="user(location)"/>
+                <constraints nullable="false"/>
             </column>
             <column name="restriction" type="text"/>
         </createTable>
 
-        <createTable tableName="category">
-            <column name="category_id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="name" type="text"/>
-        </createTable>
-
-        <createTable tableName="subcategory">
-            <column name="subcategory_id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="name" type="text"/>
-            <column name="category_id" type="int">
-                <constraints foreignKeyName="fk_category_to_subcategory" references="category(category_id)"/>
-            </column>
-        </createTable>
-
-        <createTable tableName="payment">
-            <column name="account_id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="user_id" type="text">
-                <constraints foreignKeyName="fk_user_to_payment" references="user(id)"/>
-            </column>
-            <column name="balance" type="int">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <createTable tableName="user">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="user_name" type="text"/>
-            <column name="account_number" type="text">
-                <constraints foreignKeyName="fk_payment_to_user" references="payment(account_id)"/>
-            </column>
-            <column name="region" type="text">
-                <constraints nullable="false"/>
-            </column>
-            <column name="billing_address" type="text">
-                <constraints nullable="false"/>
-            </column>
-            <column name="shipping_address" type="text">
-                <constraints nullable="false"/>
-            </column>
-            <column name="role" type="text">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
         <createTable tableName="media">
             <column name="id" type="int">
-                <constraints foreignKeyName="fk_user_media_to_media" references="user_media(id)"/>
+                <constraints foreignKeyName="fk_user_media_to_media" references="user_media(media_id)"/>
             </column>
-            <column name="listing_id" type="text">
+            <column name="listing_id" type="int">
                 <constraints foreignKeyName="fk_listing_to_media" references="listing(listing_id)"/>
             </column>
         </createTable>
 
-        <createTable tableName="user_media">
-            <column name="media_id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
+        <createTable tableName="listing_tag">
+            <column name="listing_id" type="int">
+                <constraints foreignKeyName="fk_listing_to_tag" references="listing(listing_id)"/>
             </column>
-            <column name="user_id" type="text">
-                <constraints foreignKeyName="fk_user_table" references="user(id)"/>
-            </column>
-            <column name="format" type="text">
-                <constraints nullable="false"/>
+            <column name="tag_id" type="int">
+                <constraints foreignKeyName="fk_tag_to_listing_tag" references="tag(tag_id)"/>
             </column>
         </createTable>
+
     </changeSet>
 
 </databaseChangeLog>
