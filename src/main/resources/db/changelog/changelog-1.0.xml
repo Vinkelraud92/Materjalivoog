@@ -152,4 +152,15 @@
 
     </changeSet>
 
+    <changeSet id="09.12.21 listing default values" author="SimonF">
+        <addDefaultValue tableName="listing" columnName="location" defaultValue="unspecified"/>
+        <addDefaultValue tableName="listing" columnName="inventory" defaultValue="0"/>
+        <addDefaultValue tableName="listing" columnName="unit_type" defaultValue="m"/>
+        <addDefaultValue tableName="listing" columnName="unit_price" defaultValue="1"/>
+        <addDefaultValue tableName="listing" columnName="description_1" defaultValue="description"/>
+        <addDefaultValue tableName="listing" columnName="title" defaultValue="heading"/>
+        <addDefaultValue tableName="listing" columnName="in_stock" defaultValueBoolean="true"/>
+        <addDefaultValue tableName="listing" columnName="dead_stock" defaultValueBoolean="true"/>
+    </changeSet>
+
 </databaseChangeLog>
