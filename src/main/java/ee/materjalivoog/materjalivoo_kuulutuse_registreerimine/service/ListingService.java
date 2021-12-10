@@ -1,9 +1,12 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service;
 
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Category;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Listing;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ListingService {
@@ -16,5 +19,9 @@ public class ListingService {
                 listing.getInventory(), listing.isInStock(), listing.getProfit(), listing.getDescription2(), listing.getDiscountPrice(),
                 listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction());
         return "Listing" + listing.getListingId() + "has been added to listing database!";
+    }
+
+    public List getCategory() {
+        return listingRepository.getCategory();
     }
 }
