@@ -11,7 +11,10 @@ public class ListingService {
     private ListingRepository listingRepository;
 
     public String createListing(Listing listing) {
-        listingRepository.createListing(listing.getListingId(), listing.getUserId());
-        return "Empty listing has been added to listing database!";
+        listingRepository.createListing(listing.getListingId(), listing.getUserId(), listing.getCategory(), listing.getSubcategory(),
+                listing.isDeadStock(), listing.getTitle(), listing.getDescription1(), listing.getUnitPrice(), listing.getUnitType(),
+                listing.getInventory(), listing.isInStock(), listing.getProfit(), listing.getDescription2(), listing.getDiscountPrice(),
+                listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction());
+        return "Listing" + listing.getListingId() + "has been added to listing database!";
     }
 }

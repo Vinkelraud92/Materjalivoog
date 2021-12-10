@@ -21,7 +21,7 @@ public class ListingController {
     @Autowired private ListingService listingService;
     // TODO 1.0
     //  teenus, mis loob tühja kuulutuse
-    @PostMapping("api/listing/create")
+    @PostMapping("listing/create")
     public String createListing(@RequestBody Listing listing){
         return listingService.createListing(listing);
     }
