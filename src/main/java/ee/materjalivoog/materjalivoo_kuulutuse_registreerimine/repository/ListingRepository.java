@@ -50,6 +50,12 @@ public class ListingRepository {
         paramMap.put("restriction", restriction);
         jdbcTemplate.update(sql, paramMap);
         return listingId;
+    }
+
+    public List getCategory() {
+        String sql = "SELECT name FROM category";
+        Map<String, Object> paramMap = new HashMap<>();
+        return jdbcTemplate.queryForList(sql, paramMap, String.class);
 
     }
 }

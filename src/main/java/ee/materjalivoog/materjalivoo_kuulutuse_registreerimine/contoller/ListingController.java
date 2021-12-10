@@ -26,12 +26,16 @@ public class ListingController {
         return listingService.createListing(listing);
     }
 
-
     // TODO 1.0
     //  teenus, mis kustutab kuulutuse
 
     // TODO 1.1
-    //  teenus, mis tagastab peakategooriad
+    //  teenus, mis tagastab kõik peakategooriad
+    @GetMapping("listing/category")
+    public List<Category> getCategory(){
+        return listingService.getCategory();
+    }
+
 
     // TODO 1.2
     //  teenus, mis tagastab peakategooriale vastavalt alamkategooriad
