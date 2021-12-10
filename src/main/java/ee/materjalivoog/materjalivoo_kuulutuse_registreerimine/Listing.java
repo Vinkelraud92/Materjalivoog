@@ -8,14 +8,14 @@ public class Listing {
     private boolean deadStock;
     private String title;
     private String description1;
-    private int unitPrice;
+    private double unitPrice;
     private String unitType;
     private int inventory;
     private boolean inStock;
-    private int profit;
+    private double profit;
     private String description2;
-    private int discountPrice;
-    private int discountPercentage;
+    private double discountPrice;
+    private double discountPercentage;
     private int region;
     private String location;
     private String restriction;
@@ -76,11 +76,11 @@ public class Listing {
         this.description1 = description1;
     }
 
-    public int getUnitPrice() {
+    public double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -108,11 +108,11 @@ public class Listing {
         this.inStock = inStock;
     }
 
-    public int getProfit() {
+    public double getProfit() {
         return profit;
     }
 
-    public void setProfit(int profit) {
+    public void setProfit(double profit) {
         this.profit = profit;
     }
 
@@ -124,19 +124,19 @@ public class Listing {
         this.description2 = description2;
     }
 
-    public int getDiscountPrice() {
+    public double getDiscountPrice() {
         return discountPrice;
     }
 
-    public void setDiscountPrice(int discountPrice) {
+    public void setDiscountPrice(double discountPrice) {
         this.discountPrice = discountPrice;
     }
 
-    public int getDiscountPercentage() {
+    public double getDiscountPercentage() {
         return discountPercentage;
     }
 
-    public void setDiscountPercentage(int discountPercentage) {
+    public void setDiscountPercentage(double discountPercentage) {
         this.discountPercentage = discountPercentage;
     }
 
@@ -164,3 +164,5 @@ public class Listing {
         this.restriction = restriction;
     }
 }
+
+

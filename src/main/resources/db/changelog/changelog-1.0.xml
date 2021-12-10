@@ -163,4 +163,11 @@
         <addDefaultValue tableName="listing" columnName="dead_stock" defaultValueBoolean="true"/>
     </changeSet>
 
+    <changeSet id="10.12.21 int types to double" author="SimonF">
+        <modifyDataType tableName="listing" columnName="unit_price" newDataType="double"/>
+        <modifyDataType tableName="listing" columnName="profit" newDataType="double"/>
+        <modifyDataType tableName="listing" columnName="discount_price" newDataType="double"/>
+        <modifyDataType tableName="listing" columnName="discount_percentage" newDataType="double"/>
+        <modifyDataType tableName="payment" columnName="balance" newDataType="double"/>
+    </changeSet>
 </databaseChangeLog>
