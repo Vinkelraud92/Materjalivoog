@@ -109,5 +109,8 @@ public class ListingController {
     // TODO 5.3
     //  teenus, mis salvestab restriction teksti kuulutuse külge
 
+    //TODO 5.4
+    //kasutaja loomine
+
 
 }

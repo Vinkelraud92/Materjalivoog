@@ -170,4 +170,11 @@
         <modifyDataType tableName="listing" columnName="discount_percentage" newDataType="double"/>
         <modifyDataType tableName="payment" columnName="balance" newDataType="double"/>
     </changeSet>
+    
+    <changeSet id="13.12.21 kasutaja registreerimine" author="SimonF">
+     <addColumn tableName="user">
+         <column name="password" type="text">
+         </column>
+     </addColumn>
+    </changeSet>
 </databaseChangeLog>
