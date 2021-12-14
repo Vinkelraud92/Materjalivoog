@@ -19,13 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.uploadingfiles.storage.StorageFileNotFoundException;
-import com.example.uploadingfiles.storage.StorageService;
+//import com.example.uploadingfiles.storage.StorageFileNotFoundException;
+//import com.example.uploadingfiles.storage.StorageService;
 
 @Controller
 public class FileUploadController {
 
-    private final StorageService storageService;
+    /*private final StorageService storageService;
 
     @Autowired
     public FileUploadController(StorageService storageService) {
@@ -66,6 +66,6 @@ public class FileUploadController {
     @ExceptionHandler(StorageFileNotFoundException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
         return ResponseEntity.notFound().build();
-    }
+    }*/
 
 }

@@ -1,9 +1,5 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.contoller;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Category;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Listing;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Payment;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Tag;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.User;
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.*;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -37,7 +33,15 @@ public class ListingController {
     }
 
 
-    // TODO 1.2i
+    // TODO 1.2.0
+    //  teenus, mis tagastab kõik alamkategooriad
+    @GetMapping("api/listing/subcategories")
+    public List<Subcategory> getSubcategories(){
+        return listingService.getSubcategories();
+    }
+
+
+    // TODO 1.2
     //  teenus, mis tagastab peakategooriale vastavalt alamkategooriad
 
     //  TODO 1.2.1
