@@ -21,7 +21,7 @@ public class ListingService {
         return "Listing" + listing.getListingId() + "has been added to listing database!";
     }
 
-    public List getCategory() {
-        return listingRepository.getCategory();
+    public List getCategories() {
+        return listingRepository.getCategories();
     }
 }

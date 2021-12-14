@@ -27,9 +27,4 @@ public class UserRepository {
         paramMap.put("role", role);
         jdbcTemplate.update(sql, paramMap);
     }
-
-    public String getPassword(String userName, String password){
-        String sql = "SELECT password FROM \"user\";
-        Map<String, Object> paramMap = new HashMap<>();
-    }
 }

@@ -21,7 +21,7 @@ public class ListingController {
     @Autowired private ListingService listingService;
     // TODO 1.0
     //  teenus, mis loob tühja kuulutuse
-    @PostMapping("listing/create")
+    @PostMapping("api/listing/create")
     public String createListing(@RequestBody Listing listing){
         return listingService.createListing(listing);
     }
@@ -31,13 +31,13 @@ public class ListingController {
 
     // TODO 1.1
     //  teenus, mis tagastab kõik peakategooriad
-    @GetMapping("listing/category")
-    public List<Category> getCategory(){
-        return listingService.getCategory();
+    @GetMapping("api/listing/categories")
+    public List<Category> getCategories(){
+        return listingService.getCategories();
     }
 
 
-    // TODO 1.2
+    // TODO 1.2i
     //  teenus, mis tagastab peakategooriale vastavalt alamkategooriad
 
     //  TODO 1.2.1
