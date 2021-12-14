@@ -43,6 +43,10 @@ public class ListingController {
 
     // TODO 1.2
     //  teenus, mis tagastab peakategooriale vastavalt alamkategooriad
+    @GetMapping("api/listing/selectsubcategories/{category_id}")
+    public List<Subcategory> selectSubcategories(@PathVariable ("category_id")Integer category_id){
+        return listingService.selectSubcategories(category_id);
+    }
 
     //  TODO 1.2.1
     //   teenus mis salvestab kasutaja valitud pea- ja alamkategooria

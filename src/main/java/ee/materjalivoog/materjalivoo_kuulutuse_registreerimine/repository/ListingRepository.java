@@ -1,5 +1,6 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository;
 
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Subcategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -64,5 +65,22 @@ public class ListingRepository {
         Map<String, Object> paramMap = new HashMap<>();
         return jdbcTemplate.queryForList(sql, paramMap, String.class);
 
+    }
+
+    public List selectSubcategories(Integer category_id) {
+        String sql = "SELECT name FROM subcategory WHERE category_id= :category_id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("category_id", category_id);
+        List<Subcategory> result = jdbcTemplate.query(sql, paramMap,new SubcategoryDtoMapper());
+        return result;
+    }
+
+    private class SubcategoryDtoMapper implements RowMapper<Subcategory> {
+        @Override
+        public Subcategory mapRow(ResultSet resultSet, int i) throws SQLException {
+            Subcategory result = new Subcategory();
+            result.setName(resultSet.getString("name"));
+            return result;
+        }
     }
 }
