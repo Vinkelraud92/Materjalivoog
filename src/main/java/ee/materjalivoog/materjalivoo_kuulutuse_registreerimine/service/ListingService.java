@@ -27,5 +27,9 @@ public class ListingService {
     public List getSubcategories() {
         return listingRepository.getSubcategories();
     }
+    public List selectSubcategories(Integer category_id) {
+        List result = listingRepository.selectSubcategories(category_id);
+        return result;
+    }
 
 }
