@@ -1,7 +1,11 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service;
 
 
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.exceptions.ApplicationException;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository.UserRepository;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,12 +27,14 @@ public class UserService {
                     shippingAddress, role);
         }
     }
-    public String login (String userName, String password) {
-        String encodedPassword = userRepository.getPassword(userName);
-        if (passwordEncoder.matches(password, encodedPassword)) {
-            return "Sisse logitud";
-        }else{
-            return "Parool on vale";
-        }
+    public void login (String userName, String password) {
+        //String encodedPassword = userRepository.getPassword(userName);
+//        if (passwordEncoder.matches(password, encodedPassword)) {
+//            JwtBuilder builder = Jwts.builder()
+//                    .signWith(SignatureAlgorithm.HS256, "secret")
+//                    .claim("username", userName);
+//        }else{
+//            throw new ApplicationException( "Parool on vale");
+//        }
     }
 }

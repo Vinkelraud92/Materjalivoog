@@ -52,7 +52,7 @@ public class ListingRepository {
         return listingId;
     }
 
-    public List getCategory() {
+    public List getCategories() {
         String sql = "SELECT name FROM category";
         Map<String, Object> paramMap = new HashMap<>();
         return jdbcTemplate.queryForList(sql, paramMap, String.class);
