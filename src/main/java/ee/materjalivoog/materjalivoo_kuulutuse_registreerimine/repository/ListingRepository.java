@@ -58,4 +58,11 @@ public class ListingRepository {
         return jdbcTemplate.queryForList(sql, paramMap, String.class);
 
     }
+
+    public List getSubcategories() {
+        String sql = "SELECT name FROM subcategory";
+        Map<String, Object> paramMap = new HashMap<>();
+        return jdbcTemplate.queryForList(sql, paramMap, String.class);
+
+    }
 }

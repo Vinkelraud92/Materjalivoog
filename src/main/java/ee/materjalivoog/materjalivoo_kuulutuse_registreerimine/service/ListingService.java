@@ -24,4 +24,8 @@ public class ListingService {
     public List getCategories() {
         return listingRepository.getCategories();
     }
+    public List getSubcategories() {
+        return listingRepository.getSubcategories();
+    }
+
 }
