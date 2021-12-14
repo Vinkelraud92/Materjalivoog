@@ -177,4 +177,77 @@
          </column>
      </addColumn>
     </changeSet>
+
+    <changeSet id="14.12.21 klassifikaatorid" author="SimonF">
+        <sql>
+        INSERT INTO category (name) VALUES ('Kangas');
+        INSERT INTO category (name) VALUES ('Nahk');
+        INSERT INTO category (name) VALUES ('Kunstnahk');
+        INSERT INTO category (name) VALUES ('Õmblustarbed');
+        INSERT INTO category (name) VALUES ('Paber ja papp');
+        INSERT INTO category (name) VALUES ('Puit');
+        INSERT INTO category (name) VALUES ('Metall');
+        INSERT INTO category (name) VALUES ('Elektroonika');
+        INSERT INTO category (name) VALUES ('Plastik');
+        INSERT INTO category (name) VALUES ('Muu');
+        INSERT INTO region (region_name) VALUES ('Viljandi');
+        INSERT INTO region (region_name) VALUES ('Harjumaa');
+        INSERT INTO region (region_name) VALUES ('Hiiumaa');
+        INSERT INTO region (region_name) VALUES ('Ida-Virumaa');
+        INSERT INTO region (region_name) VALUES ('Jõgevamaa');
+        INSERT INTO region (region_name) VALUES ('Järvamaa');
+        INSERT INTO region (region_name) VALUES ('Läänemaa');
+        INSERT INTO region (region_name) VALUES ('Lääne-Virumaa');
+        INSERT INTO region (region_name) VALUES ('Põlvamaa');
+        INSERT INTO region (region_name) VALUES ('Pärnumaa');
+        INSERT INTO region (region_name) VALUES ('Raplamaa');
+        INSERT INTO region (region_name) VALUES ('Saaremaa');
+        INSERT INTO region (region_name) VALUES ('Tartumaa');
+        INSERT INTO region (region_name) VALUES ('Valgamaa');
+        INSERT INTO region (region_name) VALUES ('Viljandimaa');
+        INSERT INTO region (region_name) VALUES ('Võrumaa');
+        INSERT INTO region (region_name) VALUES ('Tallinn');
+        INSERT INTO region (region_name) VALUES ('Tartu');
+        INSERT INTO subcategory (name, category_id) VALUES ('Juurdelõikustükid', '1');
+        INSERT INTO subcategory (name, category_id) VALUES ('Terve rull', '1');
+        INSERT INTO subcategory (name, category_id) VALUES ('Rulli lõpp', '1');
+        INSERT INTO subcategory (name, category_id) VALUES ('Kanga restid', '1');
+        INSERT INTO subcategory (name, category_id) VALUES ('Täissuurus', '2');
+        INSERT INTO subcategory (name, category_id) VALUES ('Keskmised tükid', '2');
+        INSERT INTO subcategory (name, category_id) VALUES ('Väikesemad tükid', '2');
+        INSERT INTO subcategory (name, category_id) VALUES ('Detailid', '2');
+        INSERT INTO subcategory (name, category_id) VALUES ('Täissuurus', '3');
+        INSERT INTO subcategory (name, category_id) VALUES ('Keskmised tükid', '3');
+        INSERT INTO subcategory (name, category_id) VALUES ('Väikesemad tükid', '3');
+        INSERT INTO subcategory (name, category_id) VALUES ('Purustatud tükid', '3');
+        INSERT INTO subcategory (name, category_id) VALUES ('Täiskogus', '4');
+        INSERT INTO subcategory (name, category_id) VALUES ('Keskmised tükid', '4');
+        INSERT INTO subcategory (name, category_id) VALUES ('Klotsid', '4');
+        INSERT INTO subcategory (name, category_id) VALUES ('Lehtmetall', '5');
+        INSERT INTO subcategory (name, category_id) VALUES ('Lattmaterjal', '5');
+        INSERT INTO subcategory (name, category_id) VALUES ('Torumaterjal', '5');
+        INSERT INTO subcategory (name, category_id) VALUES ('Profiilmaterjal', '5');
+        INSERT INTO subcategory (name, category_id) VALUES ('Valmis kasutamiseks', '6');
+        INSERT INTO subcategory (name, category_id) VALUES ('Tükid ülessulatamiseks', '6');
+        INSERT INTO subcategory (name, category_id) VALUES ('Graanulid', '6');
+        INSERT INTO subcategory (name, category_id) VALUES ('Kasutuskõlblik', '7');
+        INSERT INTO subcategory (name, category_id) VALUES ('Defektne', '7');
+        INSERT INTO subcategory (name, category_id) VALUES ('Tarvikud', '8');
+        INSERT INTO subcategory (name, category_id) VALUES ('Pakend', '9');
+        INSERT INTO subcategory (name, category_id) VALUES ('Täpsustamata', '10');
+        INSERT INTO tag (name) VALUES ('Kollane');
+        INSERT INTO tag (name) VALUES ('Punane');
+        INSERT INTO tag (name) VALUES ('Roheline');
+        INSERT INTO tag (name) VALUES ('Sinine');
+        INSERT INTO tag (name) VALUES ('Valge');
+        INSERT INTO tag (name) VALUES ('Must');
+        INSERT INTO tag (name) VALUES ('Lilla');
+        INSERT INTO tag (name) VALUES ('Hall');
+        INSERT INTO tag (name) VALUES ('Läikiv');
+        INSERT INTO tag (name) VALUES ('Matt');
+        INSERT INTO tag (name) VALUES ('Oranž');
+        INSERT INTO tag (name) VALUES ('Niiskuskindel');
+        INSERT INTO tag (name) VALUES ('Roostevaba');
+        </sql>
+    </changeSet>
 </databaseChangeLog>
