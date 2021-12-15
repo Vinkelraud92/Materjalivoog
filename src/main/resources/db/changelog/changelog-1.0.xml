@@ -250,4 +250,29 @@
         INSERT INTO tag (name) VALUES ('Roostevaba');
         </sql>
     </changeSet>
+
+    <changeSet id="15.12.21 region ja testkasutaja klassifikaatorid" author="SimonF">
+        <addDefaultValue tableName="user" columnName="billing_address" defaultValue="0"/>
+        <addDefaultValue tableName="user" columnName="shipping_address" defaultValue="0"/>
+        <addDefaultValue tableName="user" columnName="role" defaultValue="Test"/>
+        <addDefaultValue tableName="user" columnName="password" defaultValue="PW1"/>
+        <sql>
+            INSERT INTO region (region_id, region_name) VALUES ('99','Unspecified');
+            INSERT INTO payment (account_id, balance) VALUES ('0','0');
+        </sql>
+    </changeSet>
+    <changeSet id="15.12.21 testkasutaja klasifikaatorid2" author="SimonF">
+
+        <sql>
+            INSERT INTO public.user (user_id, user_name, account_number, region, billing_address, shipping_address, role, password)
+            VALUES ('0','testUser1', '0','99','0','0','Test','PW1');
+        </sql>
+    </changeSet>
+    <changeSet id="15.12.21 kuulutusele trapnsport tulp" author="SimonF">
+        <addColumn tableName="listing">
+            <column name="transport" type= "text">
+            </column>
+        </addColumn>
+        <addDefaultValue tableName="listing" columnName="transport" defaultValue="Pickup"></addDefaultValue>
+    </changeSet>
 </databaseChangeLog>

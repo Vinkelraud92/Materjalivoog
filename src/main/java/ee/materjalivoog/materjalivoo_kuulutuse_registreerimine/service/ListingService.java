@@ -17,7 +17,7 @@ public class ListingService {
         listingRepository.createListing(listing.getListingId(), listing.getUserId(), listing.getCategory(), listing.getSubcategory(),
                 listing.isDeadStock(), listing.getTitle(), listing.getDescription1(), listing.getUnitPrice(), listing.getUnitType(),
                 listing.getInventory(), listing.isInStock(), listing.getProfit(), listing.getDescription2(), listing.getDiscountPrice(),
-                listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction());
+                listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction(), listing.getTransport());
         return "Listing" + listing.getListingId() + "has been added to listing database!";
     }
 
@@ -31,5 +31,11 @@ public class ListingService {
         List result = listingRepository.selectSubcategories(category_id);
         return result;
     }
-
+  public String addCategories(Listing listing) {
+      listingRepository.createListing(listing.getListingId(), listing.getUserId(), listing.getCategory(), listing.getSubcategory(),
+               listing.isDeadStock(), listing.getTitle(), listing.getDescription1(), listing.getUnitPrice(), listing.getUnitType(),
+               listing.getInventory(), listing.isInStock(), listing.getProfit(), listing.getDescription2(), listing.getDiscountPrice(),
+               listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction(), listing.getTransport());
+        return "Selected categories " + listing.getCategory() + " & " + listing.getSubcategory() + " have been saved to listing database!";
+    }
 }
