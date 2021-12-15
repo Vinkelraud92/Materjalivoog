@@ -68,7 +68,7 @@ public class ListingRepository {
     }
 
     public List selectSubcategories(Integer category_id) {
-        String sql = "SELECT name FROM subcategory WHERE category_id= :category_id";
+        String sql = "SELECT category_id, name, subcategory_id FROM subcategory WHERE category_id= :category_id";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("category_id", category_id);
         List<Subcategory> result = jdbcTemplate.query(sql, paramMap,new SubcategoryDtoMapper());
@@ -79,7 +79,9 @@ public class ListingRepository {
         @Override
         public Subcategory mapRow(ResultSet resultSet, int i) throws SQLException {
             Subcategory result = new Subcategory();
+            result.setCategoryId(resultSet.getInt("category_id"));
             result.setName(resultSet.getString("name"));
+            result.setSubcategoryId(resultSet.getInt("subcategory_id"));
             return result;
         }
     }
