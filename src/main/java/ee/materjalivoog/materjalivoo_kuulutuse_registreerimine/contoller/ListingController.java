@@ -48,8 +48,12 @@ public class ListingController {
         return listingService.selectSubcategories(category_id);
     }
 
-    //  TODO 1.2.1
-    //   teenus mis salvestab kasutaja valitud pea- ja alamkategooria
+  //TODO 1.2.1
+  //teenus mis salvestab kasutaja valitud pea- ja alamkategooria
+  @PostMapping ("api/listing/create/pg1")
+  public String addCategories(@RequestBody Listing listing)
+  {return listingService.addCategories(listing);}
+
 
     // TODO 1.3
     //  teenus, mis salvestab materjalisaadavuse

@@ -24,12 +24,12 @@ public class ListingRepository {
     public int createListing(int listingId, int userId, int category, int subcategory, boolean deadStock, String title,
                              String description1, double unitPrice, String unitType, int inventory, boolean inStock,
                              double profit, String description2, double discountPrice, double discountPercentage,
-                             int region, String location, String restriction) {
+                             int region, String location, String restriction, String transport) {
         String sql = "INSERT INTO listing (listing_id, user_id, category, subcategory, dead_stock, title, description_1," +
                 "unit_price, unit_type, inventory, in_stock, profit, description_2, discount_price, discount_percentage," +
-                "region, location, restriction) VALUES (:listing_id, :user_id, :category, :subcategory, :dead_stock," +
+                "region, location, restriction, transport) VALUES (:listing_id, :user_id, :category, :subcategory, :dead_stock," +
                 ":title, :description_1, :unit_price, :unit_type, :inventory, :in_stock, :profit, :description_2," +
-                ":discount_price, :discount_percentage, :region, :location, :restriction)";
+                ":discount_price, :discount_percentage, :region, :location, :restriction, :transport)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("listing_id", listingId);
         paramMap.put("user_id", userId);
@@ -49,6 +49,7 @@ public class ListingRepository {
         paramMap.put("region", region);
         paramMap.put("location", location);
         paramMap.put("restriction", restriction);
+        paramMap.put("transport", transport);
         jdbcTemplate.update(sql, paramMap);
         return listingId;
     }

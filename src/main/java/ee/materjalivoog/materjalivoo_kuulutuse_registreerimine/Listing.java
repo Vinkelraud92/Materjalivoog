@@ -19,6 +19,7 @@ public class Listing {
     private int region;
     private String location;
     private String restriction;
+    private String transport;
 
     public int getListingId() {
         return listingId;
@@ -162,6 +163,14 @@ public class Listing {
 
     public void setRestriction(String restriction) {
         this.restriction = restriction;
+    }
+
+    public String getTransport() {
+        return transport;
+    }
+
+    public void setTransport(String transport) {
+        this.transport = transport;
     }
 }
 
