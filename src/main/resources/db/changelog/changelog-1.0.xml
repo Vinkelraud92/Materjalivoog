@@ -275,4 +275,26 @@
         </addColumn>
         <addDefaultValue tableName="listing" columnName="transport" defaultValue="Pickup"></addDefaultValue>
     </changeSet>
+
+    <changeSet id="16.12.21 alamkategooria tulba klassifikaatorite parandus ja kunstnaha lisamine" author="SimonF">
+        <sql>
+            UPDATE subcategory SET category_id= '10' WHERE category_id=9;
+            UPDATE subcategory SET category_id= '4' WHERE category_id=8;
+            UPDATE subcategory SET category_id= '8' WHERE category_id=7;
+            UPDATE subcategory SET category_id= '9' WHERE category_id=6;
+            UPDATE subcategory SET category_id= '7' WHERE category_id=5;
+            UPDATE subcategory SET category_id= '6' WHERE category_id=4;
+            UPDATE subcategory SET category_id= '5' WHERE category_id=3;
+            INSERT INTO subcategory (name, category_id) VALUES ('Täissuurus', '3');
+            INSERT INTO subcategory (name, category_id) VALUES ('Keskmised tükid', '3');
+            INSERT INTO subcategory (name, category_id) VALUES ('Väikesemad tükid', '3');
+            INSERT INTO subcategory (name, category_id) VALUES ('Detailid', '3');
+        </sql>
+    </changeSet>
+
+    <changeSet id="16.12.21 alamkategooria õmblustarvikute klassifikaatori parandus" author="SimonF">
+        <sql>
+            UPDATE public.subcategory SET category_id= '4' WHERE subcategory_id=25;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
