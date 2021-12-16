@@ -1,4 +1,5 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.contoller;
+
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.*;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,13 @@ public class ListingController {
 
     private Map<String, Listing> listingMap = new HashMap<>();
 
-    @Autowired private ListingService listingService;
+    @Autowired
+    private ListingService listingService;
+
     // TODO 1.0
     //  teenus, mis loob tühja kuulutuse
     @PostMapping("api/listing/create")
-    public String createListing(@RequestBody Listing listing){
+    public String createListing(@RequestBody Listing listing) {
         return listingService.createListing(listing);
     }
 
@@ -28,7 +31,7 @@ public class ListingController {
     // TODO 1.1
     //  teenus, mis tagastab kõik peakategooriad
     @GetMapping("api/listing/categories")
-    public List<Category> getCategories(){
+    public List<Category> getCategories() {
         return listingService.getCategories();
     }
 
@@ -36,7 +39,7 @@ public class ListingController {
     // TODO 1.2.0
     //  teenus, mis tagastab kõik alamkategooriad
     @GetMapping("api/listing/subcategories")
-    public List<Subcategory> getSubcategories(){
+    public List<Subcategory> getSubcategories() {
         return listingService.getSubcategories();
     }
 
@@ -44,28 +47,29 @@ public class ListingController {
     // TODO 1.2
     //  teenus, mis tagastab peakategooriale vastavalt alamkategooriad
     @GetMapping("api/listing/selectsubcategories/{category_id}")
-    public List<Subcategory> selectSubcategories(@PathVariable ("category_id")Integer category_id){
+    public List<Subcategory> selectSubcategories(@PathVariable("category_id") Integer category_id) {
         return listingService.selectSubcategories(category_id);
     }
 
-  //TODO 1.2.1
-  //teenus mis salvestab kasutaja valitud pea- ja alamkategooria
-  @PostMapping ("api/listing/create/pg1")
-  public String addCategories(@RequestBody Listing listing)
-  {return listingService.addCategories(listing);}
+    //TODO 1.2.1
+    //teenus mis salvestab kasutaja valitud pea- ja alamkategooria
+    @PostMapping("api/listing/create/pg1")
+    public String addCategories(@RequestBody Listing listing) {
+        return listingService.addCategories(listing);
+    }
 
 
     // TODO 1.3
     //  teenus, mis uuendab loodud kuulutuse kõiki andmevälju
-    @PutMapping ("api/listing/create/complete/{listing_id}")
-    public Listing updateListing(@RequestBody Listing listing, @PathVariable("listing_id") Integer listingId){
+    @PutMapping("api/listing/create/complete/{listing_id}")
+    public Listing updateListing(@RequestBody Listing listing, @PathVariable("listing_id") Integer listingId) {
         return listingService.updateListing(listing, listingId);
     }
 
     // TODO 1.3.1
     //  teenus, mis uuendab loodud kuulutuse esimesel lehel sisestatud andmevälju (töötab vaid juhul, kui kuulutus on jub andmebaasis olemas!)
-    @PutMapping ("api/listing/create/pg1/{listing_id}")
-    public ListingPg1 updatePg1(@RequestBody ListingPg1 listingPg1, @PathVariable("listing_id") Integer listingId){
+    @PutMapping("api/listing/create/pg1/{listing_id}")
+    public ListingPg1 updatePg1(@RequestBody ListingPg1 listingPg1, @PathVariable("listing_id") Integer listingId) {
         return listingService.updatePg1(listingPg1, listingId);
     }
 
@@ -83,7 +87,7 @@ public class ListingController {
 
     // TODO 3.0
     //  teenus, mis salvestab title (pealkirja)
-    @PutMapping ("api/listing/create/pg3/{listing_id}")
+    @PutMapping("api/listing/create/pg3/{listing_id}")
     public ListingPg3 updatePg3(@RequestBody ListingPg3 listingPg3, @PathVariable("listing_id") Integer listingId) {
         return listingService.updatePg3(listingPg3, listingId);
     }
