@@ -2,6 +2,7 @@ package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service;
 
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Category;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Listing;
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.ListingPg1;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,8 +53,8 @@ public class ListingService {
         return "Selected categories " + listing.getCategory() + " & " + listing.getSubcategory() + " have been saved to listing database!";
     }
 
-//    public String addDeadStock(Listing listing) {
-//        listingRepository.updateListingPg1(listing.getListingId(), listing.isDeadStock());
-//        return "Selected deadStock has been added!";
-//    }
+    public ListingPg1 updatePg1(ListingPg1 listingPg1, int listingId) {
+        listingRepository.updatePg1(listingId, listingPg1.getCategory(), listingPg1.getSubcategory(), listingPg1.isDeadStock());
+        return listingPg1;
+    }
 }
