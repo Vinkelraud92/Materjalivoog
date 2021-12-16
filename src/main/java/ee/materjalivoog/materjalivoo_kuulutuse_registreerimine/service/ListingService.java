@@ -47,8 +47,7 @@ public class ListingService {
     }
 
     public String addCategories(ListingPg1 listingPg1) {
-        listingRepository.createListingPg1(listingPg1.getListingId(),listingPg1.getCategory(), listingPg1.getSubcategory(),
-                listingPg1.isDeadStock());
+        listingRepository.createListingPg1(listingPg1.getCategory(), listingPg1.getSubcategory(), listingPg1.isDeadStock());
         return "Selected categories " + listingPg1.getCategory() + " & " + listingPg1.getSubcategory() + " have been saved to listing database!";
     }
 

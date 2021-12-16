@@ -22,17 +22,6 @@ public class ListingRepository {
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
-//    public int updateListingPg1(int listingId, int newCategory, int newSubcategory, boolean newDeadStock) {
-//        String sql = "UPDATE listing SET category= :category, subcategory= :subcategory, dead_stock= :deadStock  WHERE listing_id= :listing_id";
-//        Map<String, Object> paramMap = new HashMap<>();
-//        paramMap.put("listing_id", listingId);
-//        paramMap.put("category", newCategory);
-//        paramMap.put("subcategory", newSubcategory);
-//        paramMap.put("dead_stock", newDeadStock);
-//        jdbcTemplate.update(sql, paramMap);
-//        return listingId;
-//    }
-
     public int createListing(int listingId, int userId, int category, int subcategory, boolean deadStock, String title,
                              String description1, double unitPrice, String unitType, int inventory, boolean inStock,
                              double profit, String description2, double discountPrice, double discountPercentage,
@@ -66,15 +55,14 @@ public class ListingRepository {
         return listingId;
     }
 
-    public int createListingPg1(int listingId, int category, int subcategory, boolean deadStock) {
-        String sql = "INSERT INTO listing (listing_id, category, subcategory, dead_stock) VALUES (:listing_id, :category, :subcategory, :dead_stock)";
+    public String createListingPg1(int category, int subcategory, boolean deadStock) {
+        String sql = "INSERT INTO listing (category, subcategory, dead_stock) VALUES ( :category, :subcategory, :dead_stock)";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("listing_id", listingId);
         paramMap.put("category", category);
         paramMap.put("subcategory", subcategory);
         paramMap.put("dead_stock", deadStock);
         jdbcTemplate.update(sql, paramMap);
-        return listingId;
+        return "New listing was added. Category, subcat. and deadstock are:" +category + subcategory+deadStock;
     }
 
     public List getCategories() {
