@@ -56,7 +56,11 @@ public class ListingController {
 
 
     // TODO 1.3
-    //  teenus, mis salvestab materjalisaadavuse
+    //  teenus, mis uuendab loodud kuulutuse kõiki andmevälju
+    @PutMapping ("api/listing/create/pg1/{listing_id}")
+    public Listing updateListing(@RequestBody Listing listing, @PathVariable("listing_id") Integer listingId){
+        return listingService.updateListing(listing, listingId);
+    }
 
     // TODO 2.0
     //  teenus, mis tagastab kasutaja meediateegi sisu
