@@ -46,12 +46,10 @@ public class ListingService {
         return result;
     }
 
-    public String addCategories(Listing listing) {
-        listingRepository.createListing(listing.getListingId(), listing.getUserId(), listing.getCategory(), listing.getSubcategory(),
-                listing.isDeadStock(), listing.getTitle(), listing.getDescription1(), listing.getUnitPrice(), listing.getUnitType(),
-                listing.getInventory(), listing.isInStock(), listing.getProfit(), listing.getDescription2(), listing.getDiscountPrice(),
-                listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction(), listing.getTransport());
-        return "Selected categories " + listing.getCategory() + " & " + listing.getSubcategory() + " have been saved to listing database!";
+    public String addCategories(ListingPg1 listingPg1) {
+        listingRepository.createListingPg1(listingPg1.getListingId(),listingPg1.getCategory(), listingPg1.getSubcategory(),
+                listingPg1.isDeadStock());
+        return "Selected categories " + listingPg1.getCategory() + " & " + listingPg1.getSubcategory() + " have been saved to listing database!";
     }
 
     public ListingPg1 updatePg1(ListingPg1 listingPg1, int listingId) {

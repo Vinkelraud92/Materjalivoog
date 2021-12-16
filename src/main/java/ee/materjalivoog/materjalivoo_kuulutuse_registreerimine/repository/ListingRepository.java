@@ -65,6 +65,17 @@ public class ListingRepository {
         return listingId;
     }
 
+    public int createListingPg1(int listingId, int category, int subcategory, boolean deadStock) {
+        String sql = "INSERT INTO listing (listing_id, category, subcategory, dead_stock) VALUES (:listing_id, :category, :subcategory, :dead_stock)";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("listing_id", listingId);
+        paramMap.put("category", category);
+        paramMap.put("subcategory", subcategory);
+        paramMap.put("dead_stock", deadStock);
+        jdbcTemplate.update(sql, paramMap);
+        return listingId;
+    }
+
     public List getCategories() {
         String sql = "SELECT name FROM category";
         Map<String, Object> paramMap = new HashMap<>();
