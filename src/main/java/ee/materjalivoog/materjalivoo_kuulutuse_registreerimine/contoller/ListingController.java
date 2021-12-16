@@ -83,7 +83,10 @@ public class ListingController {
 
     // TODO 3.0
     //  teenus, mis salvestab title (pealkirja)
-
+    @PutMapping ("api/listing/create/pg3/{listing_id}")
+    public ListingPg3 updatePg3(@RequestBody ListingPg3 listingPg3, @PathVariable("listing_id") Integer listingId) {
+        return listingService.updatePg3(listingPg3, listingId);
+    }
     // TODO 3.1
     //  teenus, mis salvestab description1
 

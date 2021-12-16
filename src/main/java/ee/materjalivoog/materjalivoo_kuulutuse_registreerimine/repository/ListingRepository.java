@@ -129,6 +129,17 @@ public class ListingRepository {
         jdbcTemplate.update(sql, paramMap);
         return "Listing " + listingId + " page1 has been updated!";
     }
+
+    public String updatePg3(int listingId, String title, String description1, int tag) {
+        String sql = "UPDATE public.listing SET title= :title, description_1= :description_1, tag = :tag WHERE listing_id = :listing_id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("listing_id", listingId);
+        paramMap.put("title", title);
+        paramMap.put("description_1", description1);
+        paramMap.put("tag", tag);
+        jdbcTemplate.update(sql, paramMap);
+        return "Listing " + listingId + " page3 has been updated!";
+    }
     private class SubcategoryDtoMapper implements RowMapper<Subcategory> {
         @Override
         public Subcategory mapRow(ResultSet resultSet, int i) throws SQLException {
