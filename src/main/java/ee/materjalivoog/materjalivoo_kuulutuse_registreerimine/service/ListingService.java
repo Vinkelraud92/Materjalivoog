@@ -3,6 +3,7 @@ package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Category;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Listing;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.ListingPg1;
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.ListingPg3;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,10 @@ public class ListingService {
     public ListingPg1 updatePg1(ListingPg1 listingPg1, int listingId) {
         listingRepository.updatePg1(listingId, listingPg1.getCategory(), listingPg1.getSubcategory(), listingPg1.isDeadStock());
         return listingPg1;
+    }
+
+    public ListingPg3 updatePg3(ListingPg3 listingPg3, int listingId) {
+        listingRepository.updatePg3(listingId, listingPg3.getTitle(), listingPg3.getDescription1(), listingPg3.getTag());
+        return listingPg3;
     }
 }
