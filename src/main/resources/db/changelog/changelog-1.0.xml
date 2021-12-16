@@ -297,4 +297,14 @@
             UPDATE public.subcategory SET category_id= '4' WHERE subcategory_id=25;
         </sql>
     </changeSet>
+
+    <changeSet id="16.12.21 nullable piirangute eemaldamine listingu tabelist" author="SimonF">
+        <dropNotNullConstraint tableName="listing" columnName="title"></dropNotNullConstraint>
+        <dropNotNullConstraint tableName="listing" columnName="description_1"></dropNotNullConstraint>
+        <dropNotNullConstraint tableName="listing" columnName="unit_price"></dropNotNullConstraint>
+        <dropNotNullConstraint tableName="listing" columnName="unit_type"></dropNotNullConstraint>
+        <dropNotNullConstraint tableName="listing" columnName="inventory"></dropNotNullConstraint>
+        <dropNotNullConstraint tableName="listing" columnName="in_stock"></dropNotNullConstraint>
+        <dropNotNullConstraint tableName="listing" columnName="location"></dropNotNullConstraint>
+    </changeSet>
 </databaseChangeLog>
