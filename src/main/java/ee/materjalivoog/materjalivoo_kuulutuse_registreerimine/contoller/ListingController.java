@@ -57,9 +57,16 @@ public class ListingController {
 
     // TODO 1.3
     //  teenus, mis uuendab loodud kuulutuse kõiki andmevälju
-    @PutMapping ("api/listing/create/pg1/{listing_id}")
+    @PutMapping ("api/listing/create/complete/{listing_id}")
     public Listing updateListing(@RequestBody Listing listing, @PathVariable("listing_id") Integer listingId){
         return listingService.updateListing(listing, listingId);
+    }
+
+    // TODO 1.3.1
+    //  teenus, mis uuendab loodud kuulutuse esimesel lehel sisestatud andmevälju (töötab vaid juhul, kui kuulutus on jub andmebaasis olemas!)
+    @PutMapping ("api/listing/create/pg1/{listing_id}")
+    public ListingPg1 updatePg1(@RequestBody ListingPg1 listingPg1, @PathVariable("listing_id") Integer listingId){
+        return listingService.updatePg1(listingPg1, listingId);
     }
 
     // TODO 2.0
