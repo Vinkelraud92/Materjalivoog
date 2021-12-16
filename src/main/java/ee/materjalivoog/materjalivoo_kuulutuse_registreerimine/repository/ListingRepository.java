@@ -1,5 +1,6 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository;
 
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Category;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Subcategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -77,10 +78,10 @@ public class ListingRepository {
     }
 
     public List getCategories() {
-        String sql = "SELECT name FROM category";
+        String sql = "SELECT * FROM category";
         Map<String, Object> paramMap = new HashMap<>();
-        return jdbcTemplate.queryForList(sql, paramMap, String.class);
-
+        List<Category> result = jdbcTemplate.query(sql, paramMap, new CategoryDtoMapper());
+        return result;
     }
 
     public List getSubcategories() {
@@ -94,14 +95,14 @@ public class ListingRepository {
         String sql = "SELECT category_id, name, subcategory_id FROM subcategory WHERE category_id= :category_id";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("category_id", category_id);
-        List<Subcategory> result = jdbcTemplate.query(sql, paramMap,new SubcategoryDtoMapper());
+        List<Subcategory> result = jdbcTemplate.query(sql, paramMap, new SubcategoryDtoMapper());
         return result;
     }
 
     public String updateListing(int listingId, int userId, int category, int subcategory, boolean deadStock, String title,
                                 String description1, double unitPrice, String unitType, int inventory, boolean inStock,
                                 double profit, String description2, double discountPrice, double discountPercentage,
-                                int region, String location, String restriction, String transport){
+                                int region, String location, String restriction, String transport) {
         String sql = "UPDATE listing SET category= :category, subcategory= :subcategory, dead_stock = :dead_stock," +
                 "title= :title, description_1= :description_1, unit_price= :unit_price, unit_type= :unit_type," +
                 "inventory= :inventory, in_stock= :in_stock, description_2= :description_2, discount_price= :discount_price," +
@@ -130,6 +131,7 @@ public class ListingRepository {
         jdbcTemplate.update(sql, paramMap);
         return "Listing " + listingId + " has been updated!";
     }
+
     public String updatePg1(int listingId, int category, int subcategory, boolean deadStock) {
         String sql = "UPDATE public.listing SET category= :category, subcategory= :subcategory, dead_stock = :dead_stock WHERE listing_id = :listing_id";
         Map<String, Object> paramMap = new HashMap<>();
@@ -151,6 +153,7 @@ public class ListingRepository {
         jdbcTemplate.update(sql, paramMap);
         return "Listing " + listingId + " page3 has been updated!";
     }
+
     private class SubcategoryDtoMapper implements RowMapper<Subcategory> {
         @Override
         public Subcategory mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -161,4 +164,15 @@ public class ListingRepository {
             return result;
         }
     }
+
+    private class CategoryDtoMapper implements RowMapper<Category> {
+        @Override
+        public Category mapRow(ResultSet resultSet, int i) throws SQLException {
+            Category result = new Category();
+            result.setCategoryId(resultSet.getInt("category_id"));
+            result.setName(resultSet.getString("name"));
+            return result;
+        }
+    }
 }
+
