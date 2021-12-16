@@ -52,10 +52,10 @@ public class ListingController {
     }
 
     //TODO 1.2.1
-    //teenus mis salvestab kasutaja valitud pea- ja alamkategooria
+    //teenus mis salvestab kasutaja valitud pea- ja alamkategooria ning deadstocki
     @PostMapping("api/listing/create/pg1")
-    public String addCategories(@RequestBody Listing listing) {
-        return listingService.addCategories(listing);
+    public String addCategories(@RequestBody ListingPg1 listingPg1) {
+        return listingService.addCategories(listingPg1);
     }
 
 
@@ -67,7 +67,7 @@ public class ListingController {
     }
 
     // TODO 1.3.1
-    //  teenus, mis uuendab loodud kuulutuse esimesel lehel sisestatud andmevälju (töötab vaid juhul, kui kuulutus on jub andmebaasis olemas!)
+    //  teenus, mis uuendab loodud kuulutuse esimesel lehel sisestatud andmevälju (töötab vaid juhul, kui kuulutus on juba andmebaasis olemas!)
     @PutMapping("api/listing/create/pg1/{listing_id}")
     public ListingPg1 updatePg1(@RequestBody ListingPg1 listingPg1, @PathVariable("listing_id") Integer listingId) {
         return listingService.updatePg1(listingPg1, listingId);
