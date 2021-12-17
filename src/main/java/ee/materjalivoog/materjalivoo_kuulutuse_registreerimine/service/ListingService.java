@@ -1,9 +1,6 @@
 package ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.service;
 
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Category;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.Listing;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.ListingPg1;
-import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.ListingPg3;
+import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.*;
 import ee.materjalivoog.materjalivoo_kuulutuse_registreerimine.repository.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,5 +56,12 @@ public class ListingService {
     public ListingPg3 updatePg3(ListingPg3 listingPg3, int listingId) {
         listingRepository.updatePg3(listingId, listingPg3.getTitle(), listingPg3.getDescription1(), listingPg3.getTag());
         return listingPg3;
+    }
+
+    public ListingPg4 updatePg4(ListingPg4 listingPg4, int listingId) {
+        listingRepository.updatePg4(listingId, listingPg4.getUnitPrice(), listingPg4.getUnitType(), listingPg4.getInventory(),
+                listingPg4.isInStock(), listingPg4.getProfit(), listingPg4.getDescription2(), listingPg4.getDiscountPrice(),
+                listingPg4.getDiscountPercentage());
+        return listingPg4;
     }
 }

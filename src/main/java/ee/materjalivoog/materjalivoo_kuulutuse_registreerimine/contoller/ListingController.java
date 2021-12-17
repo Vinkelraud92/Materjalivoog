@@ -127,6 +127,11 @@ public class ListingController {
     // Todo 4.5.1
     //  teenus, mis tagastab laojäägi (inventory)
 
+    @PutMapping("api/listing/create/pg4/{listing_id}")
+    public ListingPg4 updatePg4(@RequestBody ListingPg4 listingPg4, @PathVariable("listing_id") Integer listingId) {
+        return listingService.updatePg4(listingPg4, listingId);
+    }
+
     // TODO 5.0
     //  teenus, mis salvestab regioni kuulutuse külge
 
