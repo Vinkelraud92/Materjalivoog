@@ -14,12 +14,12 @@ public class ListingService {
     @Autowired
     private ListingRepository listingRepository;
 
-    public String createListing(Listing listing) {
+    public int createListing(Listing listing) {
         listingRepository.createListing(listing.getListingId(), listing.getUserId(), listing.getCategory(), listing.getSubcategory(),
                 listing.isDeadStock(), listing.getTitle(), listing.getDescription1(), listing.getUnitPrice(), listing.getUnitType(),
                 listing.getInventory(), listing.isInStock(), listing.getProfit(), listing.getDescription2(), listing.getDiscountPrice(),
                 listing.getDiscountPercentage(), listing.getRegion(), listing.getLocation(), listing.getRestriction(), listing.getTransport());
-        return "Listing" + listing.getListingId() + "has been added to listing database!";
+        return listing.getListingId();
     }
 
     public Listing updateListing(Listing listing, int listingId) {
@@ -43,9 +43,10 @@ public class ListingService {
         return result;
     }
 
-    public String addCategories(ListingPg1 listingPg1) {
-        listingRepository.createListingPg1(listingPg1.getCategory(), listingPg1.getSubcategory(), listingPg1.isDeadStock());
-        return "Selected categories " + listingPg1.getCategory() + " & " + listingPg1.getSubcategory() + " have been saved to listing database!";
+    public int addCategories(ListingPg1 listingPg1) {
+        Integer id = listingRepository.createListingPg1(listingPg1.getCategory(), listingPg1.getSubcategory(), listingPg1.isDeadStock());
+        System.out.println("LISTINGID" + id);
+        return id;
     }
 
     public ListingPg1 updatePg1(ListingPg1 listingPg1, int listingId) {

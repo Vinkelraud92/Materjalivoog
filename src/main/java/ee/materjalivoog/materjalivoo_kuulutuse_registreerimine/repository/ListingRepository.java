@@ -55,14 +55,16 @@ public class ListingRepository {
         return listingId;
     }
 
-    public String createListingPg1(int category, int subcategory, boolean deadStock) {
+    public Integer createListingPg1(int category, int subcategory, boolean deadStock) {
         String sql = "INSERT INTO listing (category, subcategory, dead_stock) VALUES ( :category, :subcategory, :dead_stock)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("category", category);
         paramMap.put("subcategory", subcategory);
         paramMap.put("dead_stock", deadStock);
-        jdbcTemplate.update(sql, paramMap);
-        return "New listing was added. Category, subcat. and deadstock are:" +category + subcategory+deadStock;
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(sql, new MapSqlParameterSource(paramMap), keyHolder);
+        Integer id = (Integer) keyHolder.getKeys().get("listing_id");
+        return id;
     }
 
     public List getCategories() {
@@ -131,7 +133,7 @@ public class ListingRepository {
         return "Listing " + listingId + " page1 has been updated!";
     }
 
-    public String updatePg3(int listingId, String title, String description1, int tag) {
+    public String updatePg3(int listingId, String title, String description1, Integer tag) {
         String sql = "UPDATE public.listing SET title= :title, description_1= :description_1, tag = :tag WHERE listing_id = :listing_id";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("listing_id", listingId);

@@ -21,7 +21,7 @@ public class ListingController {
     // TODO 1.0
     //  teenus, mis loob tühja kuulutuse
     @PostMapping("api/listing/create")
-    public String createListing(@RequestBody Listing listing) {
+    public int createListing(@RequestBody Listing listing) {
         return listingService.createListing(listing);
     }
 
@@ -54,7 +54,7 @@ public class ListingController {
     //TODO 1.2.1
     //teenus mis salvestab kasutaja valitud pea- ja alamkategooria ning deadstocki
     @PostMapping("api/listing/create/pg1")
-    public String addCategories(@RequestBody ListingPg1 listingPg1) {
+    public int addCategories(@RequestBody ListingPg1 listingPg1) {
         return listingService.addCategories(listingPg1);
     }
 
