@@ -142,6 +142,25 @@ public class ListingRepository {
         return "Listing " + listingId + " page3 has been updated!";
     }
 
+    public String updatePg4(int listingId, Double unitPrice, String unitType, int inventory, boolean inStock, Double profit,
+                            String description2, Double discountPrice, Double discountPercentage) {
+        String sql = "UPDATE public.listing SET unit_price= :unit_price, unit_type= :unit_type, inventory = :inventory," +
+                "in_stock= :in_stock, profit= :profit, description_2= :description_2, discount_price= :discount_price," +
+                "discount_percentage= :discount_percentage WHERE listing_id = :listing_id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("listing_id", listingId);
+        paramMap.put("unit_price", unitPrice);
+        paramMap.put("unit_type", unitType);
+        paramMap.put("inventory", inventory);
+        paramMap.put("in_stock", inStock);
+        paramMap.put("profit", profit);
+        paramMap.put("description_2", description2);
+        paramMap.put("discount_price", discountPrice);
+        paramMap.put("discount_percentage", discountPercentage);
+        jdbcTemplate.update(sql, paramMap);
+        return "Listing " + listingId + " page4 has been updated!";
+    }
+
     private class SubcategoryDtoMapper implements RowMapper<Subcategory> {
         @Override
         public Subcategory mapRow(ResultSet resultSet, int i) throws SQLException {
